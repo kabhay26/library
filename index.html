@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Login Page -->
+    <div class="login-background" id="loginPage">
+        <div class="login-container">
+            <h2>Library Login</h2>
+            <input type="text" id="Name" placeholder="Name">
+            <input type="text" id="libraryID" placeholder="Library ID"><br>
+            <div class="sir">
+                <button onclick="login()">Login</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Page -->
+<div class="dashboard-container" id="dashboardPage" style="display: none;">
+    <nav>
+        <ul class="nav-menu">
+            <li><a href="#" onclick="showBooks('all')">All Books</a></li>
+            <li><a href="#" onclick="showBooks('last7days')">Last 7 Days</a></li>
+            <li><a href="#" onclick="showBooks('authors')">Authors</a></li>
+            <li><a href="#" onclick="showBooks('publishers')">Publishers</a></li>
+            <li>
+                <input type="text" id="searchBox" placeholder="Search books..." onkeyup="searchBooks()">
+            </li>
+        </ul>
+    </nav>
+
+    <!-- New Student Welcome Message -->
+    <div id="studentDisplay" class="welcome-message"></div> 
+
+    <div class="book-grid" id="bookList"></div>
+
+    <button onclick="logout()">Logout</button>
+</div>
+
+
+    <!-- Firebase Initialization -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-analytics.js";
+
+        const firebaseConfig = {
+          apiKey: "AIzaSyBF4wh5lDixAgKz7aeHc-IWWmfucDzOMCQ",
+          authDomain: "lm-s-a448d.firebaseapp.com",
+          projectId: "lm-s-a448d",
+          storageBucket: "lm-s-a448d.firebasestorage.app",
+          messagingSenderId: "77136104536",
+          appId: "1:77136104536:web:f8dad98be084e4a5688e2d",
+          measurementId: "G-02PHJ9E3KJ"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+    </script>
+
+    <!-- Ensure script.js loads after the page -->
+    <script src="style.js"></script>
+    <script src="student.js"></script>
+</body>
+</html>
